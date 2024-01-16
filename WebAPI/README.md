@@ -1,0 +1,1 @@
+Http protokolü kullanýlarak farklý sistemler arasýnda veri alýþveriþi saðladýðýmýz katman.
