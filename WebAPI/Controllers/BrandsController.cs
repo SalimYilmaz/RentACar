@@ -49,9 +49,9 @@ namespace WebAPI.Controllers
             return brandList; //JSON
         }
 
-        //[HttpPost("/add")]  // POST http://localhost:5112/api/brands/add //endpoint 
+        //[HttpPost("/add")]  // POST http://localhost:5245///api/brands/add
 
-        [HttpPost]  // POST http://localhost:5112/api/brands
+        [HttpPost]  // POST http://localhost:5245/api/brands
         public ActionResult<AddBrandResponse> Add(AddBrandRequest request)
         {
             AddBrandResponse response = _brandService.Add(request);
