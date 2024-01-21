@@ -15,7 +15,12 @@ namespace WebAPI.Controllers
 
         public FuelsController()
         {
-            _fuelService = ServiceRegistration.FuelService;
+            //_fuelService = ServiceRegistration.FuelService;
+        }
+
+        public FuelsController(IFuelService fuelService)
+        {
+            _fuelService = fuelService;
         }
 
         [HttpGet]

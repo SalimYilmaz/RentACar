@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace Core.Entities;
+﻿namespace Core.Entities;
 
 public abstract class Entity<TId> : IEntity<TId>
 {

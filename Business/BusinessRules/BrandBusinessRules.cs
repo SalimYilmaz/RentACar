@@ -1,33 +1,23 @@
-﻿using DataAccess.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.CrossCuttingConcerns.Exceptions;
+using DataAccess.Abstract;
 
-namespace Business.BusinessRules
+namespace Business.BusinessRules;
+
+public class BrandBusinessRules
 {
-    public class BrandBusinessRules
+    private readonly IBrandDal _brandDal;
+
+    public BrandBusinessRules(IBrandDal brandDal)
     {
+        _brandDal = brandDal;
+    }
 
-        private readonly IBrandDal _brandDal;
-
-        public BrandBusinessRules(IBrandDal brandDal)
+    public void CheckIfBrandNameNotExists(string brandName)
+    {
+        bool isExists = _brandDal.GetList().Any(b => b.Name == brandName);
+        if (isExists)
         {
-            _brandDal = brandDal;
-        }
-
-        public void CheckIfBrandNameNotExists(string brandName)
-        {
-            bool isExists = _brandDal.GetList().Any(b => b.Name == brandName); //>Brandler üzerinde bir liste alıp Any methodu ile koleksiyonu tek tek gezecek, Name == brandName ile soru ifadesi olarak geziyor)
-
-            //Kısaca:Listede adı eşit olan herhangi bir öğe olup olmadığını kontrol etmek için
-
-            if (isExists)
-            {
-                throw new Exception("Brand aldready exists."); //Varsa hata fırlatacak
-            }
-
+            throw new BusinessException("Brand already exists.");
         }
     }
 }

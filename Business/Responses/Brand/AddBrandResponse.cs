@@ -1,23 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Business.Responses.Brand;
 
-namespace Business.Responses.Brand
-{
-    public class AddBrandResponse
-    {
-        //DTO
-        public AddBrandResponse(int id, string name, DateTime createdAt)
-        {
-            Id = id;
-            Name = name;
-            CreatedAt = createdAt;
-        }
-
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public DateTime CreatedAt { get; set; }
-    }
+public class AddBrandResponse(int id, string name, DateTime createdAt)
+{ // Dto
+    public int Id { get; set; } = id;
+    public string? Name { get; set; } = name;
+    public DateTime CreatedAt { get; set; } = createdAt;
 }

@@ -20,6 +20,11 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
+        public void Update(Model entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public Model? GetById(int id)
         {
             throw new NotImplementedException();
@@ -30,9 +35,20 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
-        public void Update(Model entity)
+        public IList<Model> GetListByBrand(int brandId)
         {
             throw new NotImplementedException();
         }
+
+        public IList<Model> GetListByFuel(int fuelId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Model> GetListByTransmission(int transmissionId)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

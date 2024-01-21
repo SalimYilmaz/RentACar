@@ -14,9 +14,14 @@ namespace WebAPI.Controllers
 
         private readonly ITransmissionService _transmissionService;
 
+        public TransmissionsController(ITransmissionService transmissionService)
+        {
+            _transmissionService = transmissionService;
+        }
+
         public TransmissionsController()
         {
-            _transmissionService = ServiceRegistration.TransmissionService;
+            // _transmissionService = ServiceRegistration.TransmissionService;
         }
 
 

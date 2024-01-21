@@ -1,28 +1,26 @@
 ﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.Concrete;
+
+public class Model : Entity<int>
 {
-    public class Model : Entity<int>
+    public string Name { get; set; }
+    public short Year { get; set; }
+    public int BrandId { get; set; }
+    public int FuelId { get; set; }
+    public int TransmissionId { get; set; }
+    public decimal DailyPrice { get; set; }
+
+    public Model()
     {
-        public int Id { get; set; }
-        public int BrandId { get; set; }
-
-        public string Name { get; set; }
-
-        public short Year { get; set; }
-
-        public Brand? Brand { get; set; } = null;
-
-        public Fuel? Fuel { get; set; } = null;
-
-        public Transmission? Transmission { get; set; } = null;
-
-
-
+    }
+    public Model(string name, short year, int brandId, int fuelId, int transmissionId, decimal dailyPrice)
+    {
+        Name = name;
+        Year = year;
+        BrandId = brandId;
+        FuelId = fuelId;
+        TransmissionId = transmissionId;
+        DailyPrice = dailyPrice;
     }
 }
