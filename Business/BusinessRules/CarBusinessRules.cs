@@ -12,6 +12,9 @@ namespace Business.BusinessRules
         {
             _carDal = carDal;
         }
+        
+        
+        // Şu an bulunduğu yıldan model yılını çıkarır ve sonuç 20 den büyükse hata fırlatır. Yani model yılı en fazla 20 sene öncesine ait olabilir.
         public void CheckIfModelYearYoungerThanTwenty(short modelYear)
         {
             DateTime now = DateTime.Now;

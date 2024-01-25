@@ -1,19 +1,11 @@
-﻿using Business.Dtos.Model;
+﻿namespace Business.Responses.Model;
 
-namespace Business.Responses.Model
+public class GetModelListResponse
 {
-    public class GetModelListResponse
+    public ICollection<ModelListItemDto> Items { get; set; }
+
+    public GetModelListResponse(ICollection<ModelListItemDto> ıtems)
     {
-        public ICollection<ModelListItemDto> Items { get; set; }
-
-        public GetModelListResponse()
-        {
-            Items = Array.Empty<ModelListItemDto>();
-        }
-
-        public GetModelListResponse(ICollection<ModelListItemDto> items)
-        {
-            Items = items;
-        }
+        Items = ıtems;
     }
 }

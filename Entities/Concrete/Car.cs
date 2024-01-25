@@ -19,7 +19,7 @@ namespace Entities.Concrete
         {
         }
 
-        public Car(string name ,int colorId, int modelId, string carState, int kilometer, short modelYear, string plate)
+        public Car(string name, int colorId, int modelId, string carState, int kilometer, short modelYear, string plate)
         {
             Name = name;
             ColorId = colorId;
@@ -28,6 +28,6 @@ namespace Entities.Concrete
             Kilometer = kilometer;
             ModelYear = modelYear;
             Plate = plate;
-        }
+        }       
     }
 }

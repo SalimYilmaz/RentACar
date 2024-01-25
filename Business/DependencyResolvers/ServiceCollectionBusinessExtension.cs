@@ -13,7 +13,8 @@ public static class ServiceCollectionBusinessExtension
 {
     // Extension method
     // Metodun ve barındığı class'ın static olması gerekiyor
-    // İlk parametere genişleteceğimiz tip olmalı ve başında this keyword'ü olmalı.
+    // İlk parametere genişleteceğimiz tip olmalı ve başında this keyword'ü olmalı
+
     public static IServiceCollection AddBusinessServices(this IServiceCollection services)
     {
         services
@@ -31,13 +32,13 @@ public static class ServiceCollectionBusinessExtension
 
             .AddSingleton<IModelService, ModelManager>()
             .AddSingleton<IModelDal, InMemoryModelDal>()
-            .AddSingleton<ModelBusinessRules>()
+            .AddSingleton<ModelBusinessRules>()  // Fluent
 
             .AddSingleton<ICarService, CarManager>()
             .AddSingleton<ICarDal, InMemoryCarDal>()
             .AddSingleton<CarBusinessRules>();
 
-        services.AddAutoMapper(Assembly.GetExecutingAssembly()); // AutoMapper.Extensions.Microsoft.DependencyInjection NuGet Paketi
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());  // AutoMapper.Extensions.Microsoft.DependencyInjection NuGet Paketi
         // Reflection yöntemiyle Profile class'ını kalıtım alan tüm class'ları bulur ve AutoMapper'a ekler.
 
         return services;

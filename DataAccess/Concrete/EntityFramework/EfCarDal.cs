@@ -3,38 +3,32 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : ICarDal
     {
-        public void Add(Car entity)
+        public Car Add(Car entity)
         {
             throw new NotImplementedException();
         }
 
-
-        public void Update(Car entity)
-        {
-            throw new NotImplementedException();
-        }
-   
-
-        public void Delete(Car entity)
+        public Car Update(Car entity)
         {
             throw new NotImplementedException();
         }
 
-
-
-        public Car? GetById(int id)
+        public Car Delete(Car entity, bool isSoftDelete = true)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Car> GetList()
+        public Car? Get(Func<Car, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Car> GetList(Func<Car, bool>? predicate = null)
         {
             throw new NotImplementedException();
         }
@@ -73,5 +67,6 @@ namespace DataAccess.Concrete.EntityFramework
         {
             throw new NotImplementedException();
         }
+                
     }
 }

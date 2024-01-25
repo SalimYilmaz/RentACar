@@ -28,7 +28,7 @@ namespace Business.Concrete
 
             AddCarResponse response = _mapper.Map<AddCarResponse>(carToAdd);
             return response;
-
+            
         }
 
         public GetCarListResponse GetList(GetCarListRequest request)

@@ -1,20 +1,17 @@
-﻿namespace Business.Responses.Model;
+﻿namespace Business.Requests.Model;
 
-public class AddModelResponse
+public class UpdateModelRequest
 {
     public int Id { get; set; }
     public int BrandId { get; set; }
     public int FuelId { get; set; }
     public int TransmissionId { get; set; }
-   
+    
     public string Name { get; set; }
     public short Year { get; set; }
     public decimal DailyPrice { get; set; }
-    public DateTime CreatedAt { get; set; }
 
-    
-    // Constructor alındı
-    public AddModelResponse(int ıd, int brandId, int fuelId, int transmissionId, string name, short year, decimal dailyPrice, DateTime createdAt)
+    public UpdateModelRequest(int ıd, int brandId, int fuelId, int transmissionId, string name, short year, decimal dailyPrice)
     {
         Id = ıd;
         BrandId = brandId;
@@ -23,6 +20,5 @@ public class AddModelResponse
         Name = name;
         Year = year;
         DailyPrice = dailyPrice;
-        CreatedAt = createdAt;
     }
 }

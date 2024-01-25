@@ -6,6 +6,18 @@ namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryModelDal : InMemoryEntityRepositoryBase<Model, int>, IModelDal
     {
+
+        // InMemoryEntityRepositoryBase Class'ında generateId metodu abstract idi. Tanımlamamızı istedi. Tanımladık.
+        protected override int generateId()
+        {
+            int nextId = Entities.Count == 0 ? 1 : Entities.Max(e => e.Id) + 1;
+            return nextId;
+        }
+
+
+       
+        /*
+         
         public IList<Model> GetListByBrand(int brandId)
         {
             IList<Model> modelsByBrand = GetList()
@@ -33,12 +45,7 @@ namespace DataAccess.Concrete.InMemory
             return modelsByTransmission;
         }
 
-        protected override int generateId()
-        {
-            int nextId = GetList().Count == 0
-                ? 1
-                : GetList().Max(e => e.Id) + 1;
-            return nextId;
-        }
+        */
+
     }
 }

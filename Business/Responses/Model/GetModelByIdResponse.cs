@@ -1,6 +1,6 @@
-﻿namespace Business;
+﻿namespace Business.Responses.Model;
 
-public class ModelListItemDto
+public class GetModelByIdResponse
 {
     public int Id { get; set; }
     public int BrandId { get; set; }
@@ -14,8 +14,8 @@ public class ModelListItemDto
     public short Year { get; set; }
     public decimal DailyPrice { get; set; }
 
-    public ModelListItemDto(int ıd, int brandId, string brandName, int fuelId, string fuelName, int transmissionId, 
-        string transmissionName, string name, short year, decimal dailyPrice)
+    public GetModelByIdResponse(int ıd, int brandId, string brandName, int fuelId, string fuelName, 
+        int transmissionId, string transmissionName, string name, short year, decimal dailyPrice)
     {
         Id = ıd;
         BrandId = brandId;

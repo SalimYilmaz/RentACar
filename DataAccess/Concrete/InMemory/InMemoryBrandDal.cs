@@ -8,9 +8,9 @@ public class InMemoryBrandDal : InMemoryEntityRepositoryBase<Brand, int>, IBrand
 {
     protected override int generateId()
     {
-        int nextId = _entities.Count == 0
+        int nextId = Entities.Count == 0
             ? 1
-            : _entities.Max(e => e.Id) + 1;
+            : Entities.Max(e => e.Id) + 1;
         return nextId;
     }
 
@@ -20,12 +20,12 @@ public class InMemoryBrandDal : InMemoryEntityRepositoryBase<Brand, int>, IBrand
     //}
 
 
-    //private readonly HashSet<Brand> _entities = new();
+    //private readonly HashSet<Brand> Entities = new();
 
     //public void Add(Brand entity)
     //{
     //    entity.CreatedAt = DateTime.UtcNow;
-    //    _entities.Add(entity);
+    //    Entities.Add(entity);
     //}
 
     //public void Delete(Brand entity)
@@ -35,7 +35,7 @@ public class InMemoryBrandDal : InMemoryEntityRepositoryBase<Brand, int>, IBrand
 
     //public Brand? GetById(int id)
     //{
-    //    Brand? entity = _entities.FirstOrDefault(
+    //    Brand? entity = Entities.FirstOrDefault(
     //        e => e.Id.Equals(id) && e.DeletedAt.HasValue == false
     //    );
     //    return entity;
@@ -43,7 +43,7 @@ public class InMemoryBrandDal : InMemoryEntityRepositoryBase<Brand, int>, IBrand
 
     //public IList<Brand> GetList()
     //{
-    //    IList<Brand> entities = _entities.Where(e => e.DeletedAt.HasValue == false).ToList();
+    //    IList<Brand> entities = Entities.Where(e => e.DeletedAt.HasValue == false).ToList();
     //    return entities;
     //}
 
