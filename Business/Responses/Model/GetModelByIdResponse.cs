@@ -24,6 +24,7 @@ public class GetModelByIdResponse
         FuelName = fuelName;
         TransmissionId = transmissionId;
         TransmissionName = transmissionName;
+       
         Name = name;
         Year = year;
         DailyPrice = dailyPrice;

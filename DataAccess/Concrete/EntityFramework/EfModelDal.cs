@@ -1,66 +1,61 @@
-﻿using Core.DataAccess;
-using DataAccess.Abstract;
+﻿using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace DataAccess.Concrete.EntityFramework;
+
+public class EfModelDal : IModelDal
 {
-    public class EfModelDal : IModelDal
+    private readonly RentACarContext _context;
+
+    public EfModelDal(RentACarContext context)
     {
-        public void Add(Model entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Model entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Model Delete(Model entity, bool isSoftDelete = true)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Model? Get(Func<Model, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Model> GetList(Func<Model, bool>? predicate = null)
-        {
-            throw new NotImplementedException();
-        }        
-
-        Model IEntityRepository<Model, int>.Add(Model entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Model IEntityRepository<Model, int>.Update(Model entity)
-        {
-            throw new NotImplementedException();
-
-        }
-
-        public IList<Model> GetListByBrand(int brandId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Model> GetListByFuel(int fuelId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IList<Model> GetListByTransmission(int transmissionId)
-        {
-            throw new NotImplementedException();
-        }
-
+        _context = context;
     }
+
+    public Model Add(Model entity)
+    {
+        entity.CreatedAt = DateTime.UtcNow;
+        //_context.Entry(entity).State = EntityState.Added;
+        _context.Models.Add(entity);
+
+        _context.SaveChanges(); // Unit of Work
+        return entity;
+    }
+    
+    public Model Update(Model entity)
+    {
+        entity.UpdateAt = DateTime.UtcNow;
+        _context.Models.Update(entity);
+
+        _context.SaveChanges();
+        return entity;
+    }
+
+    public Model Delete(Model entity, bool isSoftDelete = true)
+    {
+        entity.DeletedAt = DateTime.UtcNow;
+        // _context.Entry(entity).State = EntityState.Modified;
+
+        if (!isSoftDelete)
+            _context.Models.Remove(entity);
+
+        _context.SaveChanges();
+        return entity;
+    }
+
+    public Model? Get(Func<Model, bool> predicate)
+    {
+        Model? model = _context.Models.FirstOrDefault(predicate); // örn. FirstOrDefault() metodu veritabanına sorguyu çalıştırır.
+        return model;
+    }
+
+    public IList<Model> GetList(Func<Model, bool>? predicate = null)
+    {
+        IQueryable<Model> query = _context.Set<Model>();
+        if (predicate != null)
+            query = query.Where(predicate).AsQueryable();
+
+        return query.ToList(); // örn. ToList() metodu veritabanına sorguyu çalıştırır.
+    }    
 }

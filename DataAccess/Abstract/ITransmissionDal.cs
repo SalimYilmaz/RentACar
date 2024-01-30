@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface ITransmissionDal : IEntityRepository<Transmission, int>
     {
+        // CRUD - Create, Read, Update, Delete
     }
 }

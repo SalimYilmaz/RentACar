@@ -66,6 +66,7 @@ public class ExceptionMiddleware
         HttpContext httpContext,
         ValidationException validationException
     )
+
     {
         httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
 
@@ -92,6 +93,7 @@ public class ExceptionMiddleware
         HttpContext httpContext,
         NotFoundException notFoundException
     )
+    
     {
         httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
 
@@ -111,6 +113,7 @@ public class ExceptionMiddleware
         HttpContext httpContext,
         BusinessException exception
     )
+
     {
         httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
         BusinessProblemDetails businessProblemDetails =

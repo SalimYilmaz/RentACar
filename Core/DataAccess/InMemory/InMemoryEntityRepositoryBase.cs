@@ -18,6 +18,12 @@ public abstract class InMemoryEntityRepositoryBase<TEntity, TEntityId>
         return entity;
     }
 
+    public TEntity Update(TEntity entity)
+    {
+        entity.UpdateAt = DateTime.UtcNow;
+        return entity;
+    }
+
     public TEntity Delete(TEntity entity, bool isSoftDelete = true)
     {
         entity.DeletedAt = DateTime.UtcNow; // Soft delete
@@ -41,11 +47,5 @@ public abstract class InMemoryEntityRepositoryBase<TEntity, TEntityId>
             query = query.Where(predicate);
 
         return query.ToArray();
-    }
-
-    public TEntity Update(TEntity entity)
-    {
-        entity.UpdateAt = DateTime.UtcNow;
-        return entity;
-    }
+    }    
 }

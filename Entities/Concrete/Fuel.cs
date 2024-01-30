@@ -11,6 +11,8 @@ namespace Entities.Concrete
     {
         public string Name { get; set; }
 
+      
+        // Constructor
         public Fuel() { }
 
         public Fuel(string name)

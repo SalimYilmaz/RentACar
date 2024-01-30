@@ -1,46 +1,76 @@
-﻿using AutoMapper;
-using Business.Abstract;
+﻿using Business.Abstract;
 using Business.BusinessRules;
 using Business.Concrete;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
+using DataAccess.Concrete.EntityFramework.Contexts;
 using DataAccess.Concrete.InMemory;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Business.DependencyResolvers;
-
-public static class ServiceCollectionBusinessExtension
+namespace Business.DependencyResolvers
 {
-    // Extension method
-    // Metodun ve barındığı class'ın static olması gerekiyor
-    // İlk parametere genişleteceğimiz tip olmalı ve başında this keyword'ü olmalı
-
-    public static IServiceCollection AddBusinessServices(this IServiceCollection services)
+    public static class ServiceCollectionBusinessExtansion
     {
-        services
-            .AddSingleton<IBrandService, BrandManager>()
-            .AddSingleton<IBrandDal, InMemoryBrandDal>()
-            .AddSingleton<BrandBusinessRules>()
+        // Extension
+        // Metodun ve barındığı classın static olması gerekiyor.
+        // İlk parametre genişleteceğimiz tip olmalı ve başında this keywordü olmalı
+        // IServiceColleciton'u genişletmek istiyoruz
+        // microsoft.extension.dependencyinjeciton abstractions yükledik.
+        
+        
+        public static IServiceCollection AddBusinessServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services
+                .AddSingleton<IBrandService, BrandManager>()
+                .AddSingleton<IBrandDal, InMemoryBrandDal>()
+                .AddSingleton<BrandBusinessRules>()
+                
+                .AddSingleton<IFuelService, FuelManager>()
+                .AddSingleton<IFuelDal, InMemoryFuelDal>()
+                .AddSingleton<FuelBusinessRules>()
+            
+                .AddSingleton<ITransmissionService, TransmissionManager>()
+                .AddSingleton<ITransmissionDal, InMemoryTransmissionDal>()
+                .AddSingleton<TransmissionBusinessRules>();
 
-            .AddSingleton<IFuelService, FuelManager>()
-            .AddSingleton<IFuelDal, InMemoryFuelDal>()
-            .AddSingleton<FuelBusinessRules>()
+            
+            
+            services.AddScoped<IModelService, ModelManager>();
+            services.AddScoped<IModelDal, EfModelDal>();
+            services.AddScoped<ModelBusinessRules>();
 
-            .AddSingleton<ITransmissionService, TransmissionManager>()
-            .AddSingleton<ITransmissionDal, InMemoryTransmissionDal>()
-            .AddSingleton<TransmissionBusinessRules>()
+            services.AddSingleton<ICarService, CarManager>();
+            services.AddSingleton<ICarDal, InMemoryCarDal>();
+            services.AddSingleton<CarBusinessRules>();
 
-            .AddSingleton<IModelService, ModelManager>()
-            .AddSingleton<IModelDal, InMemoryModelDal>()
-            .AddSingleton<ModelBusinessRules>()  // Fluent
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IUserDal, EfUserDal>();
+            services.AddScoped<UserBusinessRules>();
 
-            .AddSingleton<ICarService, CarManager>()
-            .AddSingleton<ICarDal, InMemoryCarDal>()
-            .AddSingleton<CarBusinessRules>();
+            services.AddScoped<ICustomerService, CustomerManager>();
+            services.AddScoped<ICustomerDal, EfCustomerDal>();
+            services.AddScoped<CustomerBusinessRules>();
 
-        services.AddAutoMapper(Assembly.GetExecutingAssembly());  // AutoMapper.Extensions.Microsoft.DependencyInjection NuGet Paketi
-        // Reflection yöntemiyle Profile class'ını kalıtım alan tüm class'ları bulur ve AutoMapper'a ekler.
+            services.AddScoped<IIndividualCustomerService, IndividualCustomerManager>();
+            services.AddScoped<IIndividualCustomerDal, EfIndividualCustomerDal>();
+            services.AddScoped<IndividualCustomerBusinessRules>();
 
-        return services;
+            services.AddScoped<ICorporateCustomerService, CorporateCustomerManager>();
+            services.AddScoped<ICorporateCustomerDal, EfCorporateCustomerDal>();
+            services.AddScoped<CorporateCustomerBusinessRules>();
+
+
+
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly()); // Fluent yapısı yazımı
+            services.AddDbContext<RentACarContext>(options => options.UseSqlServer(configuration.GetConnectionString("RentACarMSSQL22")));
+
+            return services;
+
+        }
+
     }
 }

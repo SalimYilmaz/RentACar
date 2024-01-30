@@ -13,6 +13,8 @@ namespace Entities.Concrete
 
         public string Name { get; set; }
 
+
+        // Constructor
         public Brand()
         {
 

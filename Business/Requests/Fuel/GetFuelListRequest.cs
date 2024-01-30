@@ -1,4 +1,4 @@
-﻿namespace Business;
+﻿namespace Business.Requests.Fuel;
 
 public class GetFuelListRequest
 {

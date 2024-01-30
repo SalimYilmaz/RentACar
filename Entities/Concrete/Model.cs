@@ -7,6 +7,7 @@ public class Model : Entity<int>
     public int BrandId { get; set; } // Normalizasyon
     public int FuelId { get; set; }
     public int TransmissionId { get; set; }
+   
     public string Name { get; set; }
     public short Year { get; set; }
     public decimal DailyPrice { get; set; }
@@ -20,11 +21,11 @@ public class Model : Entity<int>
 
 
     // ctor ile constructor eklenebilir. Constructor eklendi.
-    public Model() 
+    public Model()    // Boş ctor
     {
 
     }
-    public Model( int brandId, int fuelId, int transmissionId, string name, short year, decimal dailyPrice)
+    public Model( int brandId, int fuelId, int transmissionId, string name, short year, decimal dailyPrice)   // Dolu ctor
     {
         
         BrandId = brandId;

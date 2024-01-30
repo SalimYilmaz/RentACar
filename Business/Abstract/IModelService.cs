@@ -17,17 +17,6 @@ namespace Business.Abstract
         public AddModelResponse Add(AddModelRequest request);
         public UpdateModelResponse Update(UpdateModelRequest request);
         public DeleteModelResponse Delete(DeleteModelRequest request);
-
-        
-
-        // Brand, Fuel ve Transmission'a göre listeleme işlemi yapılıyor
-
-        /*
-       
-        public GetModelListResponse GetListByBrand(GetModelListRequestByBrand request);
-        public GetModelListResponse GetListByFuel(GetModelListRequestByFuel request);
-        public GetModelListResponse GetListByTransmission(GetModelListRequestByTransmission request);
-        
-         */
+     
     }
 }

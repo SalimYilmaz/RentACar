@@ -20,6 +20,7 @@ public class AddModelResponse
         BrandId = brandId;
         FuelId = fuelId;
         TransmissionId = transmissionId;
+       
         Name = name;
         Year = year;
         DailyPrice = dailyPrice;
