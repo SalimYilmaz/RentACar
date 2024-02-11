@@ -66,6 +66,7 @@ namespace Business.DependencyResolvers
 
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly()); // Fluent yapısı yazımı
+            
             services.AddDbContext<RentACarContext>(options => options.UseSqlServer(configuration.GetConnectionString("RentACarMSSQL22")));
 
             return services;

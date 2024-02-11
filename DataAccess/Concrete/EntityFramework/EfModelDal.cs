@@ -16,7 +16,7 @@ public class EfModelDal : IModelDal
     public Model Add(Model entity)
     {
         entity.CreatedAt = DateTime.UtcNow;
-        //_context.Entry(entity).State = EntityState.Added;
+        // _context.Entry(entity).State = EntityState.Added; // Böyle de yapılabilir. Alttaki gibi de.
         _context.Models.Add(entity);
 
         _context.SaveChanges(); // Unit of Work
