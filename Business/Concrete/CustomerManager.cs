@@ -2,7 +2,7 @@
 using Business.Abstract;
 using Business.BusinessRules;
 using Business.Profiles.Validation.Customer;
-using Business.Request.Customer;
+using Business.Requests.Customer;
 using Business.Responses.Customer;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using DataAccess.Abstract;

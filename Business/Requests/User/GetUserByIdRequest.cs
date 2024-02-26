@@ -1,4 +1,4 @@
-﻿namespace Business.Request.User
+﻿namespace Business.Requests.User
 {
     public class GetUserByIdRequest
     {

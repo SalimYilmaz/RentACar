@@ -7,6 +7,7 @@ using Business.Responses.Model;
 using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 
 namespace Business.Concrete
 {
@@ -18,17 +19,17 @@ namespace Business.Concrete
         private readonly IModelDal _modelDal;   // Veri yönetimi yapmak için IModelDal gerekiyor.
         private readonly IMapper _mapper;   // Mapleme yapacağımız için IMapper gerekiyor.
         private readonly ModelBusinessRules _modelBusinessRules;  // İş kurallarımız olacağı için ModelBusinessRules gerekiyor.
-        
-        
+        private readonly IHttpContextAccessor _contextAccessor;
+
         // Constructorlarını burada aldık
-        public ModelManager(IModelDal modelDal, ModelBusinessRules modelBusinessRules, IMapper mapper)
+
+        public ModelManager(IModelDal modelDal, ModelBusinessRules modelBusinessRules, IMapper mapper, IHttpContextAccessor contextAccessor)
         {
             _modelDal = modelDal;
             _modelBusinessRules = modelBusinessRules;
             _mapper = mapper;
         }
-        
-        
+                
         public AddModelResponse Add(AddModelRequest request)
         {
             // validation
@@ -69,7 +70,9 @@ namespace Business.Concrete
             _modelBusinessRules.CheckIfModelNameExists(request.Name);
             _modelBusinessRules.CheckIfModelYearShouldBeInLast20Years(request.Year);
 
+
             // Mapping
+            _modelBusinessRules.CheckIfBrandExists(request.BrandId);
             var modelToAdd = _mapper.Map<Model>(request);
 
             // Data Operation
@@ -87,6 +90,7 @@ namespace Business.Concrete
             Model? modelToUpdate = _modelDal.Get(predicate: model => model.Id == request.Id); // 0x123123
             _modelBusinessRules.CheckIfModelExists(modelToUpdate);
             _modelBusinessRules.CheckIfModelYearShouldBeInLast20Years(request.Year);
+            _modelBusinessRules.CheckIfBrandExists(request.BrandId);
 
             //modelToUpdate = _mapper.Map<Model>(request); // 0x333123
             /* Bunu kullanmayacağız çünkü bizim için yeni bir nesne (referans) oluşturuyor.

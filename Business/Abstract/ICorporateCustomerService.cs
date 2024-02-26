@@ -1,4 +1,4 @@
-﻿using Business.Request.CorporateCustomer;
+﻿using Business.Requests.CorporateCustomer;
 using Business.Responses.CorporateCustomer;
 
 namespace Business.Abstract

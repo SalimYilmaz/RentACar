@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Business.Dtos.CorporateCustomer;
-using Business.Request.CorporateCustomer;
+using Business.Requests.CorporateCustomer;
 using Business.Responses.CorporateCustomer;
 using Entities.Concrete;
 

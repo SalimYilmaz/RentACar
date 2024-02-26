@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.InMemory;
+using Core.Entities;
 using DataAccess.Abstract;
 using Entities.Concrete;
 

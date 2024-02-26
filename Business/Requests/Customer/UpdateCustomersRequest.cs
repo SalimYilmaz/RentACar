@@ -1,4 +1,4 @@
-﻿﻿namespace Business.Request.Customer
+﻿﻿namespace Business.Requests.Customer
 {
     public class UpdateCustomerRequest
     {

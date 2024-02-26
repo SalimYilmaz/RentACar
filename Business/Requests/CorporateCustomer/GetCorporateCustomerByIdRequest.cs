@@ -1,4 +1,4 @@
-﻿namespace Business.Request.CorporateCustomer
+﻿namespace Business.Requests.CorporateCustomer
 {
     public class GetCorporateCustomerByIdRequest
     {

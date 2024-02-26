@@ -1,15 +1,12 @@
-﻿using Business.Request.User;
-using Business.Requests.Users;
-using Business.Responses.User;
-
+﻿using Business.Requests.User;
+using Core.Utilities.Security.JWT;
 namespace Business.Abstract
 {
     public interface IUserService
     {
-        public AddUserResponse Add(AddUserRequest request);
-        public DeleteUserResponse Delete(DeleteUserRequest request);
-        public UpdateUserResponse Update(UpdateUserRequest request);
-        public GetUserListResponse GetList(GetUserListRequest request);
-        public GetUserByIdResponse GetById(GetUserByIdRequest request);
+        void Register(RegisterRequest request);
+        // bool Login(LoginRequest request); //TODO: return type: JWT  Alttakine dönüştü.
+        AccessToken Login(LoginRequest request); //TODO: return type: JWT 
+
     }
 }

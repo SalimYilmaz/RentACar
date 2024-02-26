@@ -1,10 +1,10 @@
 ﻿using Core.DataAccess;
-using Entities.Concrete;
+using Core.Entities;
 
 namespace DataAccess.Abstract
 {
     public interface IUserDal : IEntityRepository<User, int>
     {
-        // CRUD - Create, Read, Update, Delete
+       
     }
 }

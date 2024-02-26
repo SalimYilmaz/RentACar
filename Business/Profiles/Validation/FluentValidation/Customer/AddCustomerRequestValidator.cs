@@ -1,4 +1,4 @@
-﻿using Business.Request.Customer;
+﻿using Business.Requests.Customer;
 using FluentValidation;
 
 namespace Business.Profiles.Validation.Customer

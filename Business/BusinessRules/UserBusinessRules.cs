@@ -1,5 +1,5 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions;
-using Entities.Concrete;
+using Core.Entities;
 
 namespace Business.BusinessRules
 {
